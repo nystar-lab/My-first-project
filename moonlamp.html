@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Moon Lamp</title>
+
+<!-- ===== CSS LAYER ===== -->
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+        transition: background 0.8s ease;
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: center;
+    }
+
+    .moon {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, #fff, #ddd 40%, #bbb 60%, #999);
+        box-shadow: 
+            0 0 30px #fff,
+            0 0 60px #f0f8ff,
+            0 0 100px #87cefa;
+        margin-bottom: 30px;
+        transition: box-shadow 0.8s ease;
+    }
+
+    button {
+        padding: 12px 25px;
+        font-size: 16px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        background-color: #ffffff;
+        color: #333;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+        background-color: #ddd;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- ===== HTML LAYER ===== -->
+<div class="moon" id="moonLamp"></div>
+
+<h2 id="statusText">Moon Lamp: Night Mode</h2>
+
+<button onclick="changeMode()">Change Mode</button>
+
+<!-- ===== JAVASCRIPT LAYER ===== -->
+<script>
+    let isNight = true;
+
+    function changeMode() {
+        const body = document.body;
+        const text = document.getElementById("statusText");
+        const moon = document.getElementById("moonLamp");
+
+        if (isNight) {
+            body.style.background = "linear-gradient(to bottom, #ffefba, #ffffff)";
+            text.innerText = "Moon Lamp: Day Mode";
+            moon.style.boxShadow = "0 0 20px #ffd700, 0 0 40px #ffae00";
+        } else {
+            body.style.background = "linear-gradient(to bottom, #0f2027, #203a43, #2c5364)";
+            text.innerText = "Moon Lamp: Night Mode";
+            moon.style.boxShadow = "0 0 30px #fff, 0 0 60px #f0f8ff, 0 0 100px #87cefa";
+        }
+
+        isNight = !isNight;
+    }
+</script>
+
+</body>
+</html>
